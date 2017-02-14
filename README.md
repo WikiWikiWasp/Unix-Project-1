@@ -1,7 +1,7 @@
 ![Logo of the project](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiv_9agupDSAhVl0oMKHeseCmsQjRwIBw&url=http%3A%2F%2Fwww.txstate.edu%2Fbobcatband%2Fmarching_band.html&bvm=bv.146786187,d.cGw&psig=AFQjCNEw-VaSajJQgyLDUMyIHquYG_UixQ&ust=1487191508307702)
 
-# Name of the project
-> Additional information or tagline
+# Content Manager
+> Unix Project 1 - Spring 2017
 
 A brief description of your project, what it is used for and how does life get
 awesome when someone starts to use it.
@@ -21,13 +21,11 @@ Here you should say what actually happens when you execute the code above.
 
 ## Developing
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
+To begin development:
 
 ```shell
-git clone https://github.com/your/awesome-project.git
-cd awesome-project/
-packagemanager install
+git clone https://github.com/WikiWikiWasp/Unix-Project-1.git
+cd Unix-Project-1/
 ```
 
 And state what happens step-by-step.
