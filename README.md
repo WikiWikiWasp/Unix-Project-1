@@ -1,4 +1,4 @@
-![Logo of the project](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiv_9agupDSAhVl0oMKHeseCmsQjRwIBw&url=http%3A%2F%2Fwww.txstate.edu%2Fbobcatband%2Fmarching_band.html&bvm=bv.146786187,d.cGw&psig=AFQjCNEw-VaSajJQgyLDUMyIHquYG_UixQ&ust=1487191508307702)
+![Logo of the project](http://www.txstate.edu/cache7c04ddd68031e2bc11c0d626f2c05657/imagehandler/scaler/gato-docs.its.txstate.edu/jcr:df0d6df7-b40f-41c2-a24f-9fb102d5ef2e/Supercat%2BLogo.png?mode=fit&width=270)
 
 # Content Manager
 > Unix Project 1 - Spring 2017
