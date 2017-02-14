@@ -6,53 +6,55 @@
 
 # Defining Find() function
 Find() {
-  echo "stub"
+  echo "find stub"
 }
 # Defining Add() function
 Add() {
-  echo "stub"
+  echo "add stub"
 }
 # Defining Update() function
 Update() {
-  echo "stub"
+  echo "update stub"
 }
 # Defining Remove() function
 Remove() {
-  echo "stub"
+  echo "remove stub"
 }
 # Defining Display() function
 Display() {
-  echo "stub"
+  echo "display stub"
 }
 # Defining Quit() function
 Quit() {
-  echo "stub"
+  echo "quit stub"
 }
 # Main script
 
-PS3='Welcome to Contact Manager.  Please enter a letter: '
-optionlist=("
-(a) Find a record
-(b) Update a record
-(c) Remove a record
-(d) Remove a record
-(e) Quit")
-select option in "${optionlist[@]}"
+while :
 do
-    case $option in
-        "a")
-            echo "Find a record"
-            ;;
-        "b")
-            echo "Update a record"
-            ;;
-        "c")
-            echo "Remove a record"
-            ;;
-        "d")
-            echo "Quit"
-            break
-            ;;
-        *) echo not a valid option;;
+    clear
+    cat<<EOF
+
+    Welcome to Contact Manager.
+    Please enter your choice number:
+
+    1: Find a record
+    2: Add a record
+    3: Update a record
+    4: Remove a record
+    5: Quit
+
+EOF
+    read -n1 -s
+    case "$REPLY" in
+    "1")  Find ;;
+    "2")  Add ;;
+    "3")  Update ;;
+    "4")  Remove ;;
+    "q")  echo "Quit"
+          exit
+          ;;
+     * )  echo "Invalid option.  Please try again." ;;
     esac
+    sleep 1
 done
