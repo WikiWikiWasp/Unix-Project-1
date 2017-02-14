@@ -51,7 +51,7 @@ EOF
     "2")  Add ;;
     "3")  Update ;;
     "4")  Remove ;;
-    "q")  echo "Quit"
+    "5")  echo "Thank you for using Contact Manager.  Goodbye."
           exit
           ;;
      * )  echo "Invalid option.  Please try again." ;;
