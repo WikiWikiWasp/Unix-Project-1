@@ -1,5 +1,5 @@
 Name:Address:Phone:Email
 Joe Smith:123 Appletree Rd:1234567:joesmith@gmail.com
-Jamie Reed:712 Crabapple Ln:9467321:jamiereed@yahoo.com
+Joe Smith:123 Appletree Rd:1234567:joesmiththesecond@yahoo.com
 Leslie James:8123 Fancy Rd:8763467:lesliejames@mail.com
 Ralph Randall:863 Fair Pl:8963432:ralphrandall@gmail.com
