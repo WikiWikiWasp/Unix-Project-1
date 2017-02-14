@@ -1,4 +1,4 @@
-![Logo of the project](https://raw.githubusercontent.com/jehna/readme-best-practices/master/sample-logo.png)
+![Logo of the project](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiv_9agupDSAhVl0oMKHeseCmsQjRwIBw&url=http%3A%2F%2Fwww.txstate.edu%2Fbobcatband%2Fmarching_band.html&bvm=bv.146786187,d.cGw&psig=AFQjCNEw-VaSajJQgyLDUMyIHquYG_UixQ&ust=1487191508307702)
 
 # Name of the project
 > Additional information or tagline
