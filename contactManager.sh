@@ -6,7 +6,24 @@
 
 # Defining Find() function
 Find() {
-  echo "find stub"
+    
+    read -p "Please enter a name, address, phone number, or e-mail: " reply
+    if ! grep -q "$reply" database.txt; then
+	echo "Record not found."
+	return 1
+    fi
+
+    if [ "$reply" = ":" ]; then
+	echo "Record not found."
+	return 1
+    fi
+
+    if [ -z "$reply" ]; then
+	echo "Record not found."
+	return 1
+    fi 
+
+    iconv -l | grep "$reply" database.txt | head -5 | tr ':' ' '
 }
 # Defining Add() function
 Add() {
