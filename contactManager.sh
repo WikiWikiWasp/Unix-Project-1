@@ -10,92 +10,41 @@ Find() {
 }
 # Defining Add() function
 Add() {
-    #echo "add stub"
     #User prompts and inputs
-    echo "Please enter contact Name: "
-    read $CONNAME
+    read  -p "Please enter contact Name: " CONNAME
     #check if input < 1
-    if [ ${#CONNAME} -lt 1 ]
-    then
-        do 
-            echo "No input submitted, Please enter contact name again: "
-            read $CONNAME
-            #keep looping until they enter a value
-            if [ ${#CONNAME} -lt 1 ]
-            then
-                continue
-            else
-                break
-            fi
-        done
-    fi
-    echo "Please enter contact Address: "
-    read $CONADD
+    while [ ${#CONNAME} -lt 1 ]
+    do 
+        read -p "No input submitted, Please enter contact name again: " CONNAME
+        #keep looping until they enter a value
+    done
+    read -p "Please enter contact Address: " CONADD
     #check if input < 1
-    if [ ${#CONADD} -lt 1 ]
-    then
-        do 
-            echo "No input submitted, Please enter contact address again: "
-            read $CONADD
-            #keep looping until they enter a value
-            if [ ${#CONADD} -lt 1 ]
-            then
-                continue
-            else
-                break
-            fi
-        done
-    fi
-    echo "Please enter contact Phone Number (XXXXXXX): "
-    read $CONPHONE
+    while [ ${#CONADD} -lt 1 ]
+    do 
+        read -p "No input submitted, Please enter contact address again: " CONADD
+        #keep looping until they enter a value
+    done
+    read -p "Please enter contact Phone Number (XXXXXXX): " CONADD
     #check if input < 1
-    if [ ${#CONPHONE} -lt 1 ]
-    then
-        do 
-            echo "No input submitted, Please enter contact phone number again: "
-            read $CONPHONEE
-            #keep looping until they enter a value
-            if [ ${#CONPHONE} -lt 1 ]
-            then
-                continue
-            else
-                break
-            fi
-        done
-    fi
-    if [ ${#CONPHONE} -gt 7 ]
-    then
-        do
-            echo "Too many digits entered, please enter contact phone number again with 7 digits in the format XXXXXXX: "
-            read $CONPHONE
-            if [ ${#CONPHONE} -gt 7 ]
-            then
-                continue
-            else
-                break
-            fi
-        done
-    fi
-    echo "Please enter contact Email: "
-    read $CONEMAIL
+    while [ ${#CONPHONE} -lt 1 ]
+    do 
+        read -p "No input submitted, Please enter contact phone number again: " CONPHONE
+        #keep looping until they enter a value
+    done
+    while [ ${#CONPHONE} -gt 7 ]
+    do
+        read -p "Too many digits entered, please enter contact phone number again with 7 digits in the format XXXXXXX: " CONPHONE
+    done
+    read -p "Please enter contact Email: " CONEMAIL
     #check if input < 1
-    if [ ${#CONEMAIL} -lt 1 ]
-    then
-        do 
-            echo "No input submitted, Please enter contact email again: "
-            read $CONEMAIL
-            #keep looping until they enter a value
-            if [ ${#CONEMAIL} -lt 1 ]
-            then
-                continue
-            else
-                break
-            fi
-        done
-    fi
+    while [ ${#CONEMAIL} -lt 1 ]
+    do 
+        read -p "No input submitted, Please enter contact email again: " CONEMAIL
+        #keep looping until they enter a value
+    done
 
     #check if input > 0
-    if []
 }
 # Defining Update() function
 Update() {
