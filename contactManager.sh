@@ -13,43 +13,57 @@ Add() {
     database=database.txt
 
     #User prompts and inputs
+    #CONTACT NAME
     read -p "Please enter contact Name: " CONNAME
-    #check if input < 1
+    #check for no input
     while [ ${#CONNAME} -lt 1 ]
     do 
         read -p "No input submitted, Please enter contact name again: " CONNAME
-        #keep looping until they enter a value
     done
+    #output
     echo -n "${CONNAME}:" >> $database
+
+    #CONTACT ADDRESS
     read -p "Please enter contact Address: " CONADD
-    #check if input < 1
+    #check for no input
     while [ ${#CONADD} -lt 1 ]
     do 
         read -p "No input submitted, Please enter contact address again: " CONADD
-        #keep looping until they enter a value
     done
+    #output
     echo -n "${CONADD}:" >> $database
+
+    #CONTACT PHONE NUMBER
     read -p "Please enter contact Phone Number (XXXXXXX): " CONPHONE
-    #check if input < 1
+    #check for no input
     while [ ${#CONPHONE} -lt 1 ]
     do 
         read -p "No input submitted, Please enter contact phone number again: " CONPHONE
-        #keep looping until they enter a value
     done
+    #check if phone number is > 7
     while [ ${#CONPHONE} -gt 7 ]
     do
         read -p "Too many digits entered, please enter contact phone number again with 7 digits in the format XXXXXXX: " CONPHONE
     done
+    #output
     echo -n "${CONPHONE}:" >> $database
+
+    #CONTACT EMAIL
     read -p "Please enter contact Email: " CONEMAIL
-    #check if input < 1
+    #check for no input
     while [ ${#CONEMAIL} -lt 1 ]
     do 
         read -p "No input submitted, Please enter contact email again: " CONEMAIL
-        #keep looping until they enter a value
     done
+    #test for valid email
+    while [[ ${CONEMAIL} != *"@"* ]] || [[ ${CONEMAIL} != *".com" ]]
+    do
+        read -p "Please enter a valid email with an '@' and '.com': " CONEMAIL 
+    done
+    #search for duplicate entry
+    #find(${CONEMAIL})
+    #output
     echo "${CONEMAIL}" >> $database
-    #check if input > 0
 }
 # Defining Update() function
 Update() {
