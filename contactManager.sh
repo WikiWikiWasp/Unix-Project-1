@@ -10,14 +10,17 @@ Find() {
 }
 # Defining Add() function
 Add() {
+    database=database.txt
+
     #User prompts and inputs
-    read  -p "Please enter contact Name: " CONNAME
+    read -p "Please enter contact Name: " CONNAME
     #check if input < 1
     while [ ${#CONNAME} -lt 1 ]
     do 
         read -p "No input submitted, Please enter contact name again: " CONNAME
         #keep looping until they enter a value
     done
+    echo -n "${CONNAME}:" >> $database
     read -p "Please enter contact Address: " CONADD
     #check if input < 1
     while [ ${#CONADD} -lt 1 ]
@@ -25,7 +28,8 @@ Add() {
         read -p "No input submitted, Please enter contact address again: " CONADD
         #keep looping until they enter a value
     done
-    read -p "Please enter contact Phone Number (XXXXXXX): " CONADD
+    echo -n "${CONADD}:" >> $database
+    read -p "Please enter contact Phone Number (XXXXXXX): " CONPHONE
     #check if input < 1
     while [ ${#CONPHONE} -lt 1 ]
     do 
@@ -36,6 +40,7 @@ Add() {
     do
         read -p "Too many digits entered, please enter contact phone number again with 7 digits in the format XXXXXXX: " CONPHONE
     done
+    echo -n "${CONPHONE}:" >> $database
     read -p "Please enter contact Email: " CONEMAIL
     #check if input < 1
     while [ ${#CONEMAIL} -lt 1 ]
@@ -43,7 +48,7 @@ Add() {
         read -p "No input submitted, Please enter contact email again: " CONEMAIL
         #keep looping until they enter a value
     done
-
+    echo "${CONEMAIL}" >> $database
     #check if input > 0
 }
 # Defining Update() function
