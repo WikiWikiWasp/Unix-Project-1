@@ -6,10 +6,16 @@
 
 # Defining Find() function
 Find() {
-    
-    read -p "Please enter a name, address, phone number, or e-mail: " reply
+
+    if [ "$#" -eq 0 ]; then
+	read -p "Please enter a name, address, phone number, or e-mail: " reply
+    else
+	reply="$1"
+    fi
+	
     if ! grep -q "$reply" database.txt; then
 	echo "Record not found."
+	
 	return 1
     fi
 
@@ -20,6 +26,7 @@ Find() {
 
     if [ -z "$reply" ]; then
 	echo "Record not found."
+	echo "$1" 
 	return 1
     fi 
 
