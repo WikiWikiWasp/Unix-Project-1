@@ -41,7 +41,7 @@ Find() {
 }
 # Defining Add() function
 Add() {
-    database=database.txt
+    #database=database.txt
 
     #User prompts and inputs
     #CONTACT NAME
@@ -106,23 +106,30 @@ Remove() {
 }
 # Defining Display() function
 Display() {
-  printf "\ndisplay record stub\n\n"
+  database=database.txt
+  printf "\nShowing all records:\n"
+  cat $database
+  printf "\n"
+  #printf "\ndisplay record stub\n\n"
 }
 # Defining Quit() function
 Quit() {
-  printf "\nquit stub\n\n"
+  printf "\nThank you for using Contact Manager.  Goodbye.\n\n"
+  exit 0
+  #printf "\nquit stub\n\n"
 }
 # Main script
 
 printf "Welcome to my contact database, please select in the following menu:\n\n"
 
-while [ SELECTION != "e" ]
+while [ SELECTION != "q" ]
 do
   printf "(a) Find a record\n"
   printf "(b) Add a new record\n"
   printf "(c) Update a record\n"
   printf "(d) Remove a record\n"
-  printf "(e) Quit\n\n"
+  printf "(e) Display all records\n"
+  printf "(q) Quit\n\n"
   printf "Selection is: "
 
   read SELECTION
@@ -132,8 +139,8 @@ do
     "b")  Add ;;
     "c")  Update ;;
     "d")  Remove ;;
-    "e")  printf "\nThank you for using Contact Manager.  Goodbye.\n\n"
-          break ;;
+    "e")  Display ;;
+    "q")  Quit ;;
     *)    printf "\nInvalid entry. Please try again.\n\n"
   esac
 
