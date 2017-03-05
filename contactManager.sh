@@ -6,7 +6,30 @@
 
 # Defining Find() function
 Find() {
-  printf "\nfind new record stub\n\n"
+    if [ "$#" -eq 0 ]; then
+	read -p "Please enter a name, address, phone number, or e-mail: " reply
+    else
+	reply="$1"
+    fi
+	
+    if ! grep -q "$reply" database.txt; then
+	echo "Record not found."
+	
+	return 1
+    fi
+
+    if [ "$reply" = ":" ]; then
+	echo "Record not found."
+	return 1
+    fi
+
+    if [ -z "$reply" ]; then
+	echo "Record not found."
+	echo "$1" 
+	return 1
+    fi 
+
+    iconv -l | grep "$reply" database.txt | head -5 | tr ':' ' '
 }
 # Defining Add() function
 Add() {
