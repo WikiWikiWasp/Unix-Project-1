@@ -6,7 +6,35 @@
 
 # Defining Find() function
 Find() {
-  echo "find stub"
+    if [ "$#" -eq 0 ]; then
+	read -p "Please enter a name, address, phone number, or e-mail: " reply
+    else
+	reply="$1"
+    fi
+
+    echo
+    
+    if ! grep -q "$reply" database.txt; then
+	echo "Record not found."
+	echo
+	return 1
+    fi
+
+    if [ "$reply" = ":" ]; then
+	echo "Record not found."
+	echo
+	return 1
+    fi
+
+    if [ -z "$reply" ]; then
+	echo "Record not found."
+	echo  
+	return 1
+    fi 
+
+    iconv -l | grep "$reply" database.txt | head -5 | tr ':' ' '
+
+    echo
 }
 # Defining Add() function
 Add() {
@@ -67,47 +95,43 @@ Add() {
 }
 # Defining Update() function
 Update() {
-  echo "update stub"
+  printf "\nupdate record stub\n\n"
 }
 # Defining Remove() function
 Remove() {
-  echo "remove stub"
+  printf "\nremove record stub\n\n"
 }
 # Defining Display() function
 Display() {
-  echo "display stub"
+  printf "\ndisplay record stub\n\n"
 }
 # Defining Quit() function
 Quit() {
-  echo "quit stub"
+  printf "\nquit stub\n\n"
 }
 # Main script
 
-while :
+printf "Welcome to my contact database, please select in the following menu:\n\n"
+
+while [ SELECTION != "e" ]
 do
-    clear
-    cat<<EOF
+  printf "(a) Find a record\n"
+  printf "(b) Add a new record\n"
+  printf "(c) Update a record\n"
+  printf "(d) Remove a record\n"
+  printf "(e) Quit\n\n"
+  printf "Selection is: "
 
-    Welcome to Contact Manager.
-    Please enter your choice number:
+  read SELECTION
 
-    1: Find a record
-    2: Add a record
-    3: Update a record
-    4: Remove a record
-    5: Quit
+  case "$SELECTION" in
+    "a")  Find ;;
+    "b")  Add ;;
+    "c")  Update ;;
+    "d")  Remove ;;
+    "e")  printf "\nThank you for using Contact Manager.  Goodbye.\n\n"
+          break ;;
+    *)    printf "\nInvalid entry. Please try again.\n\n"
+  esac
 
-EOF
-    read -n1 -s
-    case "$REPLY" in
-    "1")  Find ;;
-    "2")  Add ;;
-    "3")  Update ;;
-    "4")  Remove ;;
-    "5")  echo "Thank you for using Contact Manager.  Goodbye."
-          exit
-          ;;
-     * )  echo "Invalid option.  Please try again." ;;
-    esac
-    sleep 1
 done
