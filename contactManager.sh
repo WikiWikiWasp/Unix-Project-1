@@ -11,25 +11,30 @@ Find() {
     else
 	reply="$1"
     fi
-	
+
+    echo
+    
     if ! grep -q "$reply" database.txt; then
 	echo "Record not found."
-	
+	echo
 	return 1
     fi
 
     if [ "$reply" = ":" ]; then
 	echo "Record not found."
+	echo
 	return 1
     fi
 
     if [ -z "$reply" ]; then
 	echo "Record not found."
-	echo "$1" 
+	echo  
 	return 1
     fi 
 
     iconv -l | grep "$reply" database.txt | head -5 | tr ':' ' '
+
+    echo
 }
 # Defining Add() function
 Add() {
