@@ -4,6 +4,9 @@
 # Carlo Rodriguez
 # Benjamin Winston
 
+#Parameters
+database=database.txt
+
 # Defining Find() function
 Find() {
     if [ "$#" -eq 0 ]; then
@@ -14,7 +17,7 @@ Find() {
 
     echo
     
-    if ! grep -q "$reply" database.txt; then
+    if ! grep -q "$reply" $database; then
 	echo "Record not found."
 	echo
 	return 1
@@ -32,7 +35,7 @@ Find() {
 	return 1
     fi 
 
-    iconv -l | grep "$reply" database.txt | head -5 | tr ':' ' '
+    iconv -l | grep "$reply" $database | head -5 | tr ':' ' '
 
     echo
 }
