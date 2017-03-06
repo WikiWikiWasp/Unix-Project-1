@@ -6,6 +6,7 @@
 
 #Parameters
 database=database.txt
+dbTemp=dbtemp.txt	#db temp file
 
 # Defining Find() function
 Find() {
@@ -98,18 +99,83 @@ Add() {
 }
 # Defining Update() function
 Update() {
-  printf "\nupdate record stub\n\n"
+  menuTitle="Update Record Menu"
+  optionA="Search for record to update"
+  optionB="Select from all records"
+
+  while [ CHOICE != "m" ]
+  do
+    printf "\n     %s\n\n" "$menuTitle"
+    printf "(a) %s\n" "$optionA"
+    printf "(b) %s\n" "$optionB"
+    printf "(m) Return to main menu\n\n"
+    printf "Please make a selection: "
+
+    read CHOICE
+
+    case "$CHOICE" in 
+      "a") #printf "\nSearch for record stub\n" ;;
+         read -p "Please enter a search string: " CHOICE
+         while [ -z $CHOICE ]
+         do
+              read -p "No string entered, please enter a search string: " CHOICE
+         done
+	 grep -n $CHOICE $database 
+         if [ $? -eq 0 ]
+         then
+              printf "Which record number would you like to update?\n"
+              read -p "or enter r to return to Update Record menu: " CHOICE
+              if [ $CHOICE == "r" ]
+              then
+                printf "Returning to %s\n" "$menuTitle"
+              else
+                head -n `expr $CHOICE - 1` $database > $dbTemp
+                tail -n +`expr $CHOICE + 1` $database >> $dbTemp
+                #cp $database db_backup.txt
+                mv $dbTemp $database
+                printf "Please update record:\n"
+		Add
+              fi
+         else
+           printf "Search string not found in database\n"
+           printf "Returning to %s\n" "$menuTitle"
+         fi ;;                
+      "b") #printf "\nSelect from all records stub\n" ;;
+         cat -n $database 
+         printf "Please select the record number you would like to update\n"
+         read -p "or enter r to return to Update Record Menu: " CHOICE
+         if [ $CHOICE == "r" ]
+         then
+            printf "Returning to %s\n" "$menuTitle"
+         else
+            while [ -z $CHOICE ]
+            do 
+              read -p "No record number entered, please enter a record number: " CHOICE
+            done
+         head -n `expr $CHOICE - 1` $database > $dbTemp
+         tail -n +`expr $CHOICE + 1` $database >> $dbTemp
+         mv $dbTemp $database
+         printf "Please update record:\n"
+	 Add
+         fi ;;
+      "m") return 0 ;;
+      *)   printf "\nInvalid selection, please try again.\n\n"
+    esac
+  done
+  #printf "\nupdate record stub\n\n"
 }
 # Defining Remove() function
 Remove() {
 
-  dbTemp=dbtemp.txt	#db temp file
-
+  menuTitle="Remove Record Menu"
+  optionA="Search for record to remove"
+  optionB="Select from all records"
+  
   while [ CHOICE != "m" ]
   do
-    printf "\n     Remove Record Menu\n\n"
-    printf "(a) Search for record to remove\n"
-    printf "(b) Select from all records\n"
+    printf "\n     %s\n\n" "$menuTitle"
+    printf "(a) %s\n" "$optionA"
+    printf "(b) %s\n" "$optionB"
     printf "(m) Return to main menu\n\n"
     printf "Please make a selection: "
 
@@ -129,7 +195,7 @@ Remove() {
               read -p "or enter r to return to Remove Record menu: " CHOICE
               if [ $CHOICE == "r" ]
               then
-                printf "Returning to Remove Record Menu\n"
+                printf "Returning to %s\n" "$menuTitle"
               else
                 head -n `expr $CHOICE - 1` $database > $dbTemp
                 tail -n +`expr $CHOICE + 1` $database >> $dbTemp
@@ -138,7 +204,7 @@ Remove() {
               fi
          else
            printf "Search string not found in database\n"
-           printf "Returning to Remove Record Menu\n"
+           printf "Returning to %s\n" "$menuTitle"
          fi ;;                
       "b") #printf "\nSelect from all records stub\n" ;;
          cat -n $database 
@@ -146,15 +212,15 @@ Remove() {
          read -p "or enter r to return to Remove Record Menu: " CHOICE
          if [ $CHOICE == "r" ]
          then
-            printf "Returning to Remove Record Menu\n"
+            printf "Returning to %s\n" "$menuTitle"
          else
             while [ -z $CHOICE ]
             do 
               read -p "No record number entered, please enter a record number: " CHOICE
             done
-         head -n `expr $CHOICE - 1` $database > $dbTemp
-         tail -n +`expr $CHOICE + 1` $database >> $dbTemp
-         mv $dbTemp $database
+            head -n `expr $CHOICE - 1` $database > $dbTemp
+            tail -n +`expr $CHOICE + 1` $database >> $dbTemp
+            mv $dbTemp $database
          fi ;;
       "m") return 0 ;;
       *)   printf "\nInvalid selection, please try again.\n\n"
