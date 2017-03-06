@@ -106,8 +106,7 @@ Remove() {
 }
 # Defining Display() function
 Display() {
-  database=database.txt
-  printf "\nShowing all records:\n"
+  printf "\n     Showing all records:\n"
   cat $database
   printf "\n"
   #printf "\ndisplay record stub\n\n"
