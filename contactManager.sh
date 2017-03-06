@@ -258,6 +258,7 @@ Display() {
   fi
   
   numRecords=`cat $database | wc -l`
+  numRecords=`expr $numRecords - 1`	#For the first header line of db
   printf "\n     Showing all records:\n"
   cat -n $database
   printf "\n     Total Records: %s\n" "$numRecords"
