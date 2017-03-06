@@ -49,7 +49,7 @@ Add() {
         read -p "No input submitted, Please enter contact name again: " CONNAME
     done
     #output
-    echo -n "${CONNAME}:" >> $database
+    printf "${CONNAME}:" >> $database
 
     #CONTACT ADDRESS
     read -p "Please enter contact Address: " CONADD
@@ -59,7 +59,7 @@ Add() {
         read -p "No input submitted, Please enter contact address again: " CONADD
     done
     #output
-    echo -n "${CONADD}:" >> $database
+    printf "${CONADD}:" >> $database
 
     #CONTACT PHONE NUMBER
     read -p "Please enter contact Phone Number (XXXXXXX): " CONPHONE
@@ -74,7 +74,7 @@ Add() {
         read -p "Too many digits entered, please enter contact phone number again with 7 digits in the format XXXXXXX: " CONPHONE
     done
     #output
-    echo -n "${CONPHONE}:" >> $database
+    printf "${CONPHONE}:" >> $database
 
     #CONTACT EMAIL
     read -p "Please enter contact Email: " CONEMAIL
