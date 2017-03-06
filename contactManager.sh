@@ -102,7 +102,65 @@ Update() {
 }
 # Defining Remove() function
 Remove() {
-  printf "\nremove record stub\n\n"
+
+  dbTemp=dbtemp.txt	#db temp file
+
+  while [ CHOICE != "m" ]
+  do
+    printf "\n     Remove Record Menu\n\n"
+    printf "(a) Search for record to remove\n"
+    printf "(b) Select from all records\n"
+    printf "(m) Return to main menu\n\n"
+    printf "Please make a selection: "
+
+    read CHOICE
+
+    case "$CHOICE" in 
+      "a") #printf "\nSearch for record stub\n" ;;
+         read -p "Please enter a search string: " CHOICE
+         while [ -z $CHOICE ]
+         do
+              read -p "No string entered, please enter a search string: " CHOICE
+         done
+	 grep -n $CHOICE $database 
+         if [ $? -eq 0 ]
+         then
+              printf "Which record number would you like to delete?\n"
+              read -p "or enter r to return to Remove Record menu: " CHOICE
+              if [ $CHOICE == "r" ]
+              then
+                printf "Returning to Remove Record Menu\n"
+              else
+                head -n `expr $CHOICE - 1` $database > $dbTemp
+                tail -n +`expr $CHOICE + 1` $database >> $dbTemp
+                #cp $database db_backup.txt
+                mv $dbTemp $database
+              fi
+         else
+           printf "Search string not found in database\n"
+           printf "Returning to Remove Record Menu\n"
+         fi ;;                
+      "b") #printf "\nSelect from all records stub\n" ;;
+         cat -n $database 
+         printf "Please select the record number you would like to remove\n"
+         read -p "or enter r to return to Remove Record Menu: " CHOICE
+         if [ $CHOICE == "r" ]
+         then
+            printf "Returning to Remove Record Menu\n"
+         else
+            while [ -z $CHOICE ]
+            do 
+              read -p "No record number entered, please enter a record number: " CHOICE
+            done
+         head -n `expr $CHOICE - 1` $database > $dbTemp
+         tail -n +`expr $CHOICE + 1` $database >> $dbTemp
+         mv $dbTemp $database
+         fi ;;
+      "m") return 0 ;;
+      *)   printf "\nInvalid selection, please try again.\n\n"
+    esac
+  done
+  #printf "\nremove record stub\n\n"
 }
 # Defining Display() function
 Display() {
