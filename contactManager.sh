@@ -134,7 +134,7 @@ Update() {
          do
               read -p "No string entered, please enter a search string: " CHOICE
          done
-	 grep -n $CHOICE $database 
+	 grep -n $CHOICE $database | tr ':' ' '
          if [ $? -eq 0 ]
          then
               printf "Which record number would you like to update?\n"
@@ -155,7 +155,7 @@ Update() {
            printf "Returning to %s\n" "$menuTitle"
          fi ;;                
       "b") #printf "\nSelect from all records stub\n" ;;
-         cat -n $database 
+         cat -n $database | tr ':' ' '
          printf "Please select the record number you would like to update\n"
          read -p "or enter r to return to Update Record Menu: " CHOICE
          if [ $CHOICE == "r" ]
@@ -208,7 +208,7 @@ Remove() {
          do
               read -p "No string entered, please enter a search string: " CHOICE
          done
-	 grep -n $CHOICE $database 
+	 grep -n $CHOICE $database | tr ':' ' '
          if [ $? -eq 0 ]
          then
               printf "Which record number would you like to delete?\n"
@@ -227,7 +227,7 @@ Remove() {
            printf "Returning to %s\n" "$menuTitle"
          fi ;;                
       "b") #printf "\nSelect from all records stub\n" ;;
-         cat -n $database 
+         cat -n $database | tr ':' ' '
          printf "Please select the record number you would like to remove\n"
          read -p "or enter r to return to Remove Record Menu: " CHOICE
          if [ $CHOICE == "r" ]
@@ -260,7 +260,7 @@ Display() {
   numRecords=`cat $database | wc -l`
   numRecords=`expr $numRecords - 1`	#For the first header line of db
   printf "\n     Showing all records:\n"
-  cat -n $database
+  cat -n $database | tr ':' ' '
   printf "\n     Total Records: %s\n" "$numRecords"
 }
 # Defining Quit() function
