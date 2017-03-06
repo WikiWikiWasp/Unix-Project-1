@@ -35,7 +35,7 @@ Find() {
 	return 1
     fi 
 
-    iconv -l | grep "$reply" $database | head -5 | tr ':' ' '
+    iconv -l | grep "$reply" $database | head | tr ':' ' '
 
     echo
 }
