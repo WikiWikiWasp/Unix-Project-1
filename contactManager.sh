@@ -10,6 +10,13 @@ dbTemp=dbtemp.txt	#db temp file
 
 # Defining Find() function
 Find() {
+     if ! [ -f $database ]	
+     then
+       printf "No database present.  Please populate the database before selecting this option.\n"
+       printf "Returning to main menu.\n"
+       return 1
+    fi
+    
     if [ "$#" -eq 0 ]; then
 	read -p "Please enter a name, address, phone number, or e-mail: " reply
     else
@@ -99,6 +106,13 @@ Add() {
 }
 # Defining Update() function
 Update() {
+   if ! [ -f $database ]	
+   then
+      printf "No database present.  Please populate the database before selecting this option.\n"
+      printf "Returning to main menu.\n"
+      return 1
+   fi
+  
   menuTitle="Update Record Menu"
   optionA="Search for record to update"
   optionB="Select from all records"
@@ -166,7 +180,13 @@ Update() {
 }
 # Defining Remove() function
 Remove() {
-
+   if ! [ -f $database ]	
+   then
+      printf "No database present.  Please populate the database before selecting this option.\n"
+      printf "Returning to main menu.\n"
+      return 1
+   fi
+  
   menuTitle="Remove Record Menu"
   optionA="Search for record to remove"
   optionB="Select from all records"
@@ -230,8 +250,15 @@ Remove() {
 }
 # Defining Display() function
 Display() {
+   if ! [ -f $database ]	
+   then
+      printf "No database present.  Please populate the database before selecting this option.\n"
+      printf "Returning to main menu.\n"
+      return 1
+   fi
+
   printf "\n     Showing all records:\n"
-  cat $database
+  cat -n $database
   printf "\n"
   #printf "\ndisplay record stub\n\n"
 }
