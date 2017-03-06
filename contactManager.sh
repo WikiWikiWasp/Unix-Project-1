@@ -231,7 +231,7 @@ Remove() {
 # Defining Display() function
 Display() {
   printf "\n     Showing all records:\n"
-  cat $database
+  cat -n $database
   printf "\n"
   #printf "\ndisplay record stub\n\n"
 }
