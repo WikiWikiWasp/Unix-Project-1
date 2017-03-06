@@ -250,17 +250,17 @@ Remove() {
 }
 # Defining Display() function
 Display() {
-   if ! [ -f $database ]	
-   then
+  if ! [ -f $database ]	
+  then
       printf "No database present.  Please populate the database before selecting this option.\n"
       printf "Returning to main menu.\n"
       return 1
-   fi
-
+  fi
+  
+  numRecords=`cat $database | wc -l`
   printf "\n     Showing all records:\n"
   cat -n $database
-  printf "\n"
-  #printf "\ndisplay record stub\n\n"
+  printf "\n     Total Records: %s\n" "$numRecords"
 }
 # Defining Quit() function
 Quit() {
