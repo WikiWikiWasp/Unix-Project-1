@@ -10,6 +10,8 @@ dbTemp=dbtemp.txt	#db temp file
 
 # Defining Find() function
 Find() {
+    CheckDB
+    
     if [ "$#" -eq 0 ]; then
 	read -p "Please enter a name, address, phone number, or e-mail: " reply
     else
@@ -99,6 +101,8 @@ Add() {
 }
 # Defining Update() function
 Update() {
+  CheckDB
+  
   menuTitle="Update Record Menu"
   optionA="Search for record to update"
   optionB="Select from all records"
@@ -166,7 +170,8 @@ Update() {
 }
 # Defining Remove() function
 Remove() {
-
+  CheckDB
+  
   menuTitle="Remove Record Menu"
   optionA="Search for record to remove"
   optionB="Select from all records"
@@ -230,6 +235,8 @@ Remove() {
 }
 # Defining Display() function
 Display() {
+  CheckDB
+
   printf "\n     Showing all records:\n"
   cat -n $database
   printf "\n"
@@ -240,6 +247,15 @@ Quit() {
   printf "\nThank you for using Contact Manager.  Goodbye.\n\n"
   exit 0
   #printf "\nquit stub\n\n"
+}
+
+CheckDB() {	#The purpose of this function is to check for the presence of a db, and exit function is no db
+   if ! [ -f $database ]	
+   then
+      printf "No database present.  Please populate the database before selecting this option.\n"
+      printf "Returning to main menu.\n"
+      return 1
+  fi
 }
 # Main script
 
