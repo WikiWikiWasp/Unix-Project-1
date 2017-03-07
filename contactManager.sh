@@ -49,9 +49,6 @@ Find() {
 }
 # Defining Add() function
 Add() {
-    #database=database.txt
-
-    #User prompts and inputs
     #CONTACT NAME
     read -p "Please enter contact Name: " CONNAME
     #check for no input
@@ -103,7 +100,7 @@ Add() {
     result=$( Find ${CONEMAIL} )
     echo ${result}
     #validate duplicate email
-    while [ "${result}" != "Record not found.\n" ]
+    while [[ "${result}" != *"Record not found."* ]]
     do
         #duplicate message
         read -p "Duplicate email found. Please enter a unique email: " CONEMAIL
