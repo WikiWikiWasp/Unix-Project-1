@@ -98,7 +98,6 @@ Add() {
     done
     #search for duplicate entry in database
     result=$( Find ${CONEMAIL} )
-    echo ${result}
     #validate duplicate email
     while [[ "${result}" != *"Record not found."* ]]
     do
