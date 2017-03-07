@@ -99,10 +99,30 @@ Add() {
     do
         read -p "Please enter a valid email with an '@' and '.com': " CONEMAIL 
     done
-    #search for duplicate entry
-    #find(${CONEMAIL})
-    #output
+    #search for duplicate entry in database
+    result=$( Find ${CONEMAIL} )
+    echo ${result}
+    #validate duplicate email
+    while [ "${result}" != "Record not found.\n" ]
+    do
+        #duplicate message
+        read -p "Duplicate email found. Please enter a unique email: " CONEMAIL
+        #check for no input
+        while [ ${#CONEMAIL} -lt 1 ]
+        do 
+            read -p "No input submitted, Please enter contact email again: " CONEMAIL
+        done
+        #test for valid email
+        while [[ ${CONEMAIL} != *"@"* ]] || [[ ${CONEMAIL} != *".com" ]]
+        do
+            read -p "Please enter a valid email with an '@' and '.com': " CONEMAIL 
+        done
+        #reasign new email and retest
+        result=$( Find ${CONEMAIL} )
+    done
+    #output email when unique
     echo "${CONEMAIL}" >> $database
+    
 }
 # Defining Update() function
 Update() {
